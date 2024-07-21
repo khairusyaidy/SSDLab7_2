@@ -11,5 +11,3 @@ set +x
 
 echo 'Now...'
 echo 'Visit http://localhost to see your PHP application in action.'
-
-docker run -d -p 80:80 --name jenkins-blueocean jenkins/jenkins:lts
