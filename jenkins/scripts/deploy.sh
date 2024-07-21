@@ -4,7 +4,9 @@ set -x
 docker run -d -p 8082:80 --name my-apache-php-app -v /var/jenkins_home/workspace/jenkins-php-selenium-test/src:/var/www/html php:7.2-apache
 sleep 1
 docker ps
-docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' my-apache-php-app
+docker network create jenkins
+docker run -d --network jenkins --name my-php-app -p 8082:80 php:7.2-apache
+
 set +x
 
 echo 'Now...'
