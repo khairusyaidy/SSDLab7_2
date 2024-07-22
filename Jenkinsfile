@@ -4,7 +4,12 @@ pipeline {
 		stage('Integration UI Test') {
 			parallel {
 				stage('Deploy') {
-					agent any
+                    agent {
+                        docker {
+                            image 'jenkins-blueocean' 
+                            args '-v /var/jenkins_home:/var/jenkins_home' 
+                        }
+                    }
 					environment {
                         DOCKER_HOST = 'tcp://docker:2376'
                     }
