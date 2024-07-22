@@ -5,6 +5,9 @@ pipeline {
 			parallel {
 				stage('Deploy') {
 					agent any
+					environment {
+                        DOCKER_HOST = 'tcp://localhost:2375'
+                    }
 					steps {
 						sh './jenkins/scripts/deploy.sh'
 						input message: 'Finished using the web site? (Click "Proceed" to continue)'
