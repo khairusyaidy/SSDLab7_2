@@ -6,7 +6,7 @@ pipeline {
 				stage('Deploy') {
 					agent any
 					environment {
-                        DOCKER_HOST = 'tcp://localhost:2376'
+                        DOCKER_HOST = 'tcp://docker:2376'
                     }
 					steps {
 						sh './jenkins/scripts/deploy.sh'
