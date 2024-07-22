@@ -6,7 +6,7 @@ pipeline {
 				stage('Deploy') {
                     agent {
                         docker {
-                            image 'jenkins-blueocean' 
+                            image 'docker:latest' 
                             args '-v /var/jenkins_home:/var/jenkins_home' 
                         }
                     }
