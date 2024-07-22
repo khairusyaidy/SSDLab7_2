@@ -7,7 +7,7 @@ pipeline {
                     agent {
                         docker {
                             image 'docker:latest' 
-                            args '-v /var/jenkins_home:/var/jenkins_home' 
+                            args '--privileged'  // Required for DinD
                         }
                     }
 					environment {
