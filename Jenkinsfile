@@ -4,17 +4,8 @@ pipeline {
 		stage('Integration UI Test') {
 			parallel {
 				stage('Deploy') {
-                    agent {
-                        docker {
-                            image 'docker:latest' 
-                            args '--privileged'  // Required for DinD
-                        }
-                    }
-					environment {
-                        DOCKER_HOST = 'tcp://docker:2376'
-                        DOCKER_TLS_VERIFY = '1'
-                        DOCKER_CERT_PATH = '/certs/client'
-                    }
+                    agent any
+
 					steps {
 						sh './jenkins/scripts/deploy.sh'
 						input message: 'Finished using the web site? (Click "Proceed" to continue)'
