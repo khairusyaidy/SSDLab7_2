@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 set -x
-export DOCKER_HOST=tcp://localhost:2375
+export DOCKER_HOST=tcp://localhost:2376
 
 docker kill my-apache-php-app || true
 docker rm my-apache-php-app || true
